@@ -1,7 +1,163 @@
 $base-color: #AED6F1;
-$color: rgba(#000000, 0.90 );
+$color: black;
+$color2: pink;
+$radius: .35rem;
+$border-width: 2px;
+$color-bg: white;
+$offset: .5rem;
+$transition: .3s;
+
 
 body {
-    background-color: $color;
-    color: $base-color;
+    background-color: lightblue;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+ul {
+    margin: 0;
+    padding: 0 0 56px 0;
+    list-style: none;
+}
+  
+button {
+    font-weight: 600;
+    border: solid $border-width $color;
+    outline: 0;
+    padding: 1rem 4rem;
+    font-size: 1rem;
+    background-color: $color-bg;
+    border-radius: $radius;
+    position: relative;
+    cursor: pointer;
+    
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $color2;
+        z-index: -1;
+        border-radius: $radius;
+        border: solid $border-width $color;
+        transition: all $transition ease-in-out;
+    }
+}
+
+button.CreateTodoButtom {
+    &::after {
+        border: 0;
+        box-shadow: 0px 0px 0px $border-width $color;
+        top: $offset;
+        left: $offset;
+    }
+      
+    &:hover {
+        background-color: $color2;
+        border: 0;
+        &::after {
+          background-color: $color;
+          box-shadow: none;
+        }
+    }   
+}
+
+.TodoCounter h2 {
+    font-size: 32px;
+    text-align: center;
+    margin: 0;
+    padding: 4px;
+}
+
+.TodoCounter p {
+    text-align: center;
+    margin: 8px 0 20px;
+    font-weight: 600;
+}
+
+
+.TodoSearch {
+    background: #F9FBFC;
+    border-radius: $radius;
+    border: 2px solid #202329;
+    margin: 0 24px;
+    height: 48px;
+    width: calc(100% - 62px);
+    font-size: 24px;
+    text-align: center;
+    font-family: 'Montserrat';
+    font-weight: 400;
+    color: #1E1E1F;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+  
+.TodoSearch::placeholder {
+    color: #A5A5A5;
+    font-family: 'Montserrat';
+    font-weight: 400;
+}
+  
+.TodoSearch:focus {
+    outline-color: $color2;
+}
+
+.TodoItem {
+    background-color: #FAFAFA;
+    border-radius: $radius;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+    box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.15);
+}
+  
+.TodoItem-p {
+    margin: 24px 0 24px 24px;
+    width: calc(100% - 120px);
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.TodoItem-p--complete {
+    text-decoration: line-through;
+}
+  
+.Icon {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 48px;
+    font-size: 30px;
+    font-weight: bold;
+    /* background-color: #CCC; */
+}
+  
+.Icon-check {
+    position: absolute;
+    left: 12px;
+    transform: rotate(180deg)
+}
+
+.Icon-check--active {
+    color: #4caf50;
+}
+  
+.Icon-delete {
+    position: absolute;
+    // top: -4px;
+    right: 0;
+}
+
+.Icon-delete:hover {
+    color: red;
 }
