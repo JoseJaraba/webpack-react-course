@@ -1,8 +1,11 @@
 import React from "react";
 
-const TodoSearch = () => {
+const TodoSearch = ({searchTaskValue, setSearchTaskValue}) => {
     return (
-        <input className="TodoSearch" placeholder="Onion" />
+        <input className="TodoSearch" value={searchTaskValue} placeholder="Onion" onChange={(event) => {
+            console.log(event.target.value);
+            setSearchTaskValue(event.target.value);
+        }} />
     );
 }
 

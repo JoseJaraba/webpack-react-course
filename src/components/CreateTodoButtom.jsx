@@ -2,7 +2,11 @@ import React from "react";
 
 const CreateTodoButtom = () => {
     return(
-        <button className="CreateTodoButtom">Add ⚡</button>
+        <button className="CreateTodoButtom" onClick={() => {
+            console.log('click!')
+        }}>
+            Add ⚡
+        </button>
     );
 }
 
