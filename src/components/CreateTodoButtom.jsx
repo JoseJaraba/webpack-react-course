@@ -1,10 +1,8 @@
 import React from "react";
 
-const CreateTodoButtom = () => {
+const CreateTodoButtom = (props) => {
     return(
-        <button className="CreateTodoButtom" onClick={() => {
-            console.log('click!')
-        }}>
+        <button className="CreateTodoButtom" onClick={() => props.setOpenModal(true)}>
             Add ⚡
         </button>
     );
