@@ -6,25 +6,23 @@ import { TodoItem } from "./TodoItem";
 import { CreateTodoButtom } from "./CreateTodoButtom";
 import { TodoModal } from "./TodoModal";
 import { TodoForm } from "./TodoForm";
+import { TodoContext } from "./TodoContext";
 
-const TodoMain = ({
-    dataStatus,
-    totalTodos, 
-    completedTodos,
-    searchTaskValue, 
-    setSearchTaskValue,
-    searchedTodos,
-    openModal,
-    setOpenModal,
-    toggleCompleteTodo,
-    addTodo,
-    deleteTodo,
-}) => {
+const TodoMain = () => {
+    const {
+        dataStatus, 
+        searchedTodos, 
+        toggleCompleteTodo, 
+        deleteTodo,
+        openModal,
+        setOpenModal,
+    } = React.useContext(TodoContext);
+
     return(
         // only one tag must be returned 
         <React.Fragment>
-            <TodoCounter total={totalTodos} completed={completedTodos}/>
-            <TodoSearch searchTaskValue={searchTaskValue} setSearchTaskValue={setSearchTaskValue} />
+            <TodoCounter />
+            <TodoSearch />
             <TodoList>
                 {dataStatus.error && <p>Error...</p>}
                 {dataStatus.loading && <p>Loading...</p>}
@@ -35,7 +33,7 @@ const TodoMain = ({
             </TodoList>
             {openModal && (
                 <TodoModal>
-                    <TodoForm addTodo={addTodo} />
+                    <TodoForm />
                 </TodoModal>
             )}
             <CreateTodoButtom setOpenModal={setOpenModal} />
