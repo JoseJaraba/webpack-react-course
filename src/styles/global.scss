@@ -187,7 +187,6 @@ button.CreateTodoButtom {
 .Icon-check {
     position: absolute;
     left: 12px;
-    transform: rotate(180deg)
 }
 
 .Icon-check--active {
@@ -243,4 +242,65 @@ button.CreateTodoButtom {
     border: solid $border-width $color;
     box-shadow: 0px 5px 25px rgba(97, 218, 250, 0.5);
 
+}
+
+.LoadingTodo-container {
+    position: relative;
+    display: flex;
+    border-radius: $radius;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+    box-shadow: 0px 5px 50px rgba(40, 25, 80, 0.15);
+}
+
+.LoadingTodo-text {
+    margin: 24px 0px 24px 24px;
+    width: calc(100% - 120px);
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.LoadingTodo-Icon {
+    animation: rotation 2s infinite linear;
+}
+
+.LoadingTodo-container {
+    background: linear-gradient(90deg, rgba(250,250,250,1), rgb(200,199,199));
+    background-size: 400% 400%;
+    animation: loadingAnimation 3s ease-in-out infinite;
+}
+
+.EmptyTodo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 24px;
+}
+
+.EmptyTodo-container span {
+    font-size: 64px;
+}
+
+@keyframes loadingAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
 }

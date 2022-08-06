@@ -24,7 +24,7 @@ const useLocalStorage = (itemName, initialValue) => {
                 setDataStatus({...dataStatus,error:true})
             }
 
-        }, 1000);
+        }, 3000);
     }, []);
 
     const saveItem = (newItem) => {

@@ -7,6 +7,9 @@ import { CreateTodoButtom } from "./CreateTodoButtom";
 import { TodoModal } from "./TodoModal";
 import { TodoForm } from "./TodoForm";
 import { TodoContext } from "./TodoContext";
+import { TodosError } from "./TodosError";
+import { TodosLoading } from "./TodosLoading";
+import { EmptyTodos } from "./EmptyTodos";
 
 const TodoMain = () => {
     const {
@@ -24,9 +27,9 @@ const TodoMain = () => {
             <TodoCounter />
             <TodoSearch />
             <TodoList>
-                {dataStatus.error && <p>Error...</p>}
-                {dataStatus.loading && <p>Loading...</p>}
-                {(!dataStatus.loading && !searchedTodos.length) && <p>¡Created your first TODO!</p>}
+                {dataStatus.error && <TodosError error={error} />}
+                {dataStatus.loading && Array(3).fill(1).map((a, i) => <TodosLoading key={i} />)}
+                {(!dataStatus.loading && !searchedTodos.length) && <EmptyTodos />}
                 {searchedTodos.map(todo => (
                     <TodoItem key={todo.text} text={todo.text} completed={todo.completed} onComplete={() => toggleCompleteTodo(todo.text)} onDelete={() => deleteTodo(todo.text)} />
                 ))}
